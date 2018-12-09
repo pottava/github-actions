@@ -17,10 +17,11 @@ gox --osarch "linux/amd64 darwin/amd64 windows/amd64" \
 ret=$?
 
 if [ "${POST_PROCESS}" == "github_release" ]; then
-    apk --no-cache add curl && curl --location --silent -o ghr.tar.gz \
+    apk --no-cache add curl jq && curl --location --silent -o ghr.tar.gz \
         https://github.com/tcnksm/ghr/releases/download/v0.12.0/ghr_v0.12.0_linux_amd64.tar.gz
     tar xvf ghr.tar.gz && mv ghr_v0.12.0_linux_amd64/ghr /usr/bin/ && chmod +x /usr/bin/ghr
-    ghr -t "${GITHUB_TOKEN}" -u "${GITHUB_ACTOR}" -r "${GITHUB_REPOSITORY}" \
+    ghr -t "${GITHUB_TOKEN}" -u "${GITHUB_ACTOR}" \
+        -r "$(cat "${GITHUB_EVENT_PATH}" | jq -r '.repository.name')" \
         --replace "${tag}" dist/
     ret=$?
 fi
