@@ -65,9 +65,8 @@ action "BuildGoApps" {
   needs = ["Deps"]
   uses = "pottava/github-actions/go/build@master"
   env = {
-    POST_PROCESS = "github_release"
+    BUILD_OPTIONS = "-X main.version=${version}-${GITHUB_SHA:0:7} -X main.date=$(date '+%Y-%m-%d')"
   }
-  secrets = ["GITHUB_TOKEN"]
 }
 ```
 
@@ -75,6 +74,6 @@ options:
 
 Environment Variables     |                                                        |
 ------------------------- | ------------------------------------------------------ |
-POST_PROCESS              | `github_release` if you'd like to upload the binaries. |
-GITHUB_TOKEN              | set as one of secrets if you specify `github_release`. |
+BUILD_OPTIONS             | Specify Go build options                               |
 SRC_DIR                   | Specify source directory (default: .)                  |
+DST_DIR                   | Specify output directory (default: dist/)              |
