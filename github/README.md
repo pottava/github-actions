@@ -5,6 +5,10 @@
 ```console
 action "Release" {
   uses = "pottava/github-actions/github/release@master"
+  env = {
+    ARTIFACT_DIR = "app/dist/"
+  }
+  secrets = ["GITHUB_TOKEN"]
 }
 ```
 
