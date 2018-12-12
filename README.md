@@ -1,5 +1,5 @@
 # GitHub Actions
 
-# for go applications
+## Actions for Go
 
-[actions](https://github.com/pottava/github-actions/tree/master/go)
+[definitions](https://github.com/pottava/github-actions/tree/master/go)
