@@ -1,5 +1,14 @@
 # Actions for Go
 
+## Run codegen with go-swagger/go-swagger v0.16.0
+
+```console
+action "RunCodegen" {
+  uses = "pottava/github-actions/go/codegen@master"
+  args = "generate server -f swagger.yaml"
+}
+```
+
 ## Solve dependencies with golang/dep v0.5
 
 ```console
@@ -36,8 +45,8 @@ action "RunGoUnitTests" {
   needs = ["Deps"]
   uses = "pottava/github-actions/go/test@master"
   env = {
-    SRC_DIR = "src"
-    IGNORE_DIR = "generated"
+    SRC_DIR = "src/"
+    IGNORE_DIR = "/generated/"
   }
 }
 ```
