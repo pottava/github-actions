@@ -4,7 +4,7 @@
 
 ```console
 action "Release" {
-  uses = "pottava/github-actions/github/release@master"
+  uses = "supinf/github-actions/github/release@master"
   env = {
     ARTIFACT_DIR = "app/dist/"
   }

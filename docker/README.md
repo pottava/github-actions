@@ -4,7 +4,7 @@
 
 ```console
 action "Login" {
-  uses = "pottava/github-actions/docker/login@master"
+  uses = "supinf/github-actions/docker/login@master"
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 ```
@@ -26,7 +26,7 @@ AWS_DEFAULT_REGION        | AWS region. (Default: us-east-1)                    
 
 ```console
 action "Build" {
-  uses = "pottava/github-actions/docker/build@master"
+  uses = "supinf/github-actions/docker/build@master"
   args = "foo/bar:${version}-${GITHUB_SHA:0:7}"
 }
 ```
@@ -49,7 +49,7 @@ BUILD_DIRECTORY           | Build context. (Default: . )                        
 
 ```console
 action "Tag" {
-  uses = "pottava/github-actions/docker/tag@master"
+  uses = "supinf/github-actions/docker/tag@master"
   env = {
     SRC_IMAGE = "foo/bar:1.2"
     DST_IMAGE = "foo/bar:latest"
@@ -70,7 +70,7 @@ DST_IMAGE                 | target image (+ tag). |
 
 ```console
 action "Push" {
-  uses = "pottava/github-actions/docker/push@master"
+  uses = "supinf/github-actions/docker/push@master"
   args = "foo/bar:stable,foo/bar:latest"
 }
 ```

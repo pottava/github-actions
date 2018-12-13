@@ -4,7 +4,7 @@
 
 ```console
 action "RunCodegen" {
-  uses = "pottava/github-actions/go/codegen@master"
+  uses = "supinf/github-actions/go/codegen@master"
   args = "generate server -f swagger.yaml"
 }
 ```
@@ -13,7 +13,7 @@ action "RunCodegen" {
 
 ```console
 action "SolveGoDeps" {
-  uses = "pottava/github-actions/go/deps@master"
+  uses = "supinf/github-actions/go/deps@master"
 }
 ```
 
@@ -28,7 +28,7 @@ SRC_DIR                   | Specify source directory (default: .)               
 ```console
 action "RunGoStaticAnalysis" {
   needs = ["Deps"]
-  uses = "pottava/github-actions/go/lint@master"
+  uses = "supinf/github-actions/go/lint@master"
 }
 ```
 
@@ -43,7 +43,7 @@ SRC_DIR                   | Specify source directory (default: .)               
 ```console
 action "RunGoUnitTests" {
   needs = ["Deps"]
-  uses = "pottava/github-actions/go/test@master"
+  uses = "supinf/github-actions/go/test@master"
   env = {
     SRC_DIR = "src/"
     IGNORE_DIR = "/generated/"
@@ -58,12 +58,12 @@ Environment Variables     |                                                     
 SRC_DIR                   | Specify source directory (default: .)                  |
 IGNORE_DIR                | Directories which will be ignored for unit testing.    |
 
-## Build the app with mitchellh/gox & golang v1.11.1
+## Build the app with mitchellh/gox & golang v1.11.2
 
 ```console
 action "BuildGoApps" {
   needs = ["Deps"]
-  uses = "pottava/github-actions/go/build@master"
+  uses = "supinf/github-actions/go/build@master"
   env = {
     BUILD_OPTIONS = "-X main.version=${version}-${GITHUB_SHA:0:7} -X main.date=$(date '+%Y-%m-%d')"
   }
